@@ -1,16 +1,25 @@
 int red = 13;
 int yellow = 12;
 int green = 11;
+int button = 2; // switch is on pin 2
+int buttonValue = 0; // switch defaults to 0 or LOW
+
 
 void setup() {
   pinMode(red,OUTPUT);
   pinMode(yellow,OUTPUT);
   pinMode(green,OUTPUT);
+  pinMode(button,INPUT);
+  digitalWrite(green, HIGH);
 }
 
 void loop(){
-  changeLights();
-  delay(5000);
+  buttonValue = digitalRead(button);
+  
+  if (buttonValue == HIGH) {
+    changeLights();
+    delay(15000); // wait for 15 seconds
+  }
 }
 
 void changeLights(){
